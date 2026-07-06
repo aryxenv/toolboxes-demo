@@ -16,7 +16,7 @@ export function ToolboxesIntro(_props: SlideProps) {
   return (
     <SlideFrame eyebrow="Foundry · GA" title="Toolboxes in Foundry.">
       <div className="grid grid-cols-1 gap-8 lg:min-h-full lg:grid-cols-[1.05fr_0.95fr] lg:content-center lg:gap-12">
-        <div className="flex min-w-0 flex-col gap-5">
+        <div className="flex min-w-0 flex-col justify-center gap-5">
           <p className="text-2xl font-semibold leading-tight tracking-[-0.03em] sm:text-3xl lg:text-4xl">
             Build your tools once. Consume them from{" "}
             <span className="text-primary">any agent</span>.
