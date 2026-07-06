@@ -6,6 +6,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from src.router.diagnostics import router as diagnostics_router
 from src.router.exports import router as exports_router
+from src.router.agents import router as agents_router
+from src.router.evaluate import router as evaluate_router
 
 load_dotenv(Path(__file__).with_name(".env"))
 
@@ -48,6 +50,8 @@ async def root():
 
 app.include_router(diagnostics_router)
 app.include_router(exports_router)
+app.include_router(agents_router)
+app.include_router(evaluate_router)
 
 
 if __name__ == "__main__":

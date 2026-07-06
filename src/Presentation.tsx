@@ -1,10 +1,13 @@
 import type { ComponentType } from "react";
 import { useCallback, useEffect, useState } from "react";
-import { AgentDrivenAuthoring } from "@/components/slides/agent-driven-authoring/main";
-import { EmbeddedDemoWorkflow } from "@/components/slides/embedded-demo-workflow/main";
-import { PickPolishCustomization } from "@/components/slides/pick-polish-customization/main";
-import { Sharing } from "@/components/slides/sharing/main";
-import { WebslidesIntroduction } from "@/components/slides/webslides-introduction/main";
+import { AgentToolboxCompare } from "@/components/slides/agent-toolbox-compare/main";
+import { BuildAndConsume } from "@/components/slides/build-and-consume/main";
+import { BuildOnceConsumeAnywhere } from "@/components/slides/build-once-consume-anywhere/main";
+import { ToolboxesIntro } from "@/components/slides/toolboxes-intro/main";
+import { ToolSprawlProblem } from "@/components/slides/tool-sprawl-problem/main";
+import { UseCaseOneToolboxManyAgents } from "@/components/slides/use-case-one-toolbox-many-agents/main";
+import { ValueAndGetStarted } from "@/components/slides/value-and-get-started/main";
+import { WhatIsAToolbox } from "@/components/slides/what-is-a-toolbox/main";
 import type { SlideProps } from "@/components/slides/types";
 import { Button } from "@/components/ui/button";
 import { ExportDialog } from "@/components/ui/export-dialog";
@@ -33,34 +36,52 @@ interface SlideDefinition {
 
 const slides: SlideDefinition[] = [
   {
-    id: "webslides-introduction",
-    label: "Webslides introduction",
-    Component: WebslidesIntroduction,
-    cycleItems: 3,
+    id: "toolboxes-intro",
+    label: "Toolboxes in Foundry",
+    Component: ToolboxesIntro,
+    cycleItems: 0,
   },
   {
-    id: "agent-driven-authoring",
-    label: "Agent-driven authoring",
-    Component: AgentDrivenAuthoring,
+    id: "tool-sprawl-problem",
+    label: "The problem",
+    Component: ToolSprawlProblem,
     cycleItems: 4,
   },
   {
-    id: "embedded-demo-workflow",
-    label: "Embedded demo workflow",
-    Component: EmbeddedDemoWorkflow,
+    id: "what-is-a-toolbox",
+    label: "What is a toolbox",
+    Component: WhatIsAToolbox,
     cycleItems: 4,
   },
   {
-    id: "pick-polish-customization",
-    label: "Pick and polish customization",
-    Component: PickPolishCustomization,
-    cycleItems: 3,
-  },
-  {
-    id: "sharing",
-    label: "Sharing",
-    Component: Sharing,
+    id: "build-and-consume",
+    label: "Build and consume",
+    Component: BuildAndConsume,
     cycleItems: 2,
+  },
+  {
+    id: "build-once-consume-anywhere",
+    label: "Build once, consume anywhere",
+    Component: BuildOnceConsumeAnywhere,
+    cycleItems: 0,
+  },
+  {
+    id: "use-case-one-toolbox-many-agents",
+    label: "Use case",
+    Component: UseCaseOneToolboxManyAgents,
+    cycleItems: 3,
+  },
+  {
+    id: "agent-toolbox-compare",
+    label: "Live demo",
+    Component: AgentToolboxCompare,
+    cycleItems: 0,
+  },
+  {
+    id: "value-and-get-started",
+    label: "Value and get started",
+    Component: ValueAndGetStarted,
+    cycleItems: 0,
   },
 ];
 

@@ -58,7 +58,7 @@ export interface EditablePptxExportOptions extends ExportRequestOptions {
  * unlike an HTTP error response which carries a status message. */
 export function describeServerError(error: unknown): string {
   if (error instanceof TypeError) {
-    return "Server unavailable — start the server with `uv run fastapi dev`.";
+    return "Server unavailable. Start the server with `uv run fastapi dev`.";
   }
 
   return error instanceof Error ? error.message : "Request failed.";

@@ -28,6 +28,22 @@ uv run fastapi dev
 
 Available at http://localhost:8000 (no config needed - automatically available on client)
 
+### Live demo — "Agent + Toolbox vs Agent"
+
+Slide 7 streams two real Microsoft Foundry agents side by side: one consuming a
+Foundry **Toolbox** over its MCP endpoint, one with no tools. To run it live:
+
+1. `cp server/.env.example server/.env` and fill in your Foundry project, model,
+   toolbox, and Azure OpenAI endpoints, then `az login`.
+2. Build the shared toolbox once: `cd server && uv run python create_toolbox.py`
+   and paste the printed endpoint into `FOUNDRY_TOOLBOX_ENDPOINT`.
+3. Start the server (`uv run fastapi dev`) and the deck (`npm run dev`).
+
+`server/.env` is git-ignored and auth uses `DefaultAzureCredential` — no secrets
+are committed. When the backend is offline (e.g. the published deck) the slide
+runs on realistic **demo data** labeled `Demo data`; when it's online it's fully
+live and real errors surface as-is. See `presenter-notes.md` for the demo script.
+
 ## Build and present
 
 Use the browser as the live deck and GitHub Copilot App as the authoring surface.
