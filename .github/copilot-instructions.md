@@ -1,26 +1,33 @@
-# Copilot instructions for Webslides
+# Copilot instructions
 
-This repository is a presentation template for people who want to build slide
-decks as web apps. Treat the user as a presenter, storyteller, or solution
-engineer first. They usually care about getting a polished deck, live demo,
-export, or shareable presentation working quickly; the React/Vite/FastAPI code
-is the implementation detail behind that experience.
+This repository is a presentation deck that tells the story of Toolboxes in
+Foundry: curate tools once, expose them through one MCP endpoint, and reuse them
+across every agent. It is built as a web app on the webslides template (React,
+Vite, Tailwind, with an optional FastAPI backend). Treat the user as a presenter
+or solution engineer first: they care about a polished deck, a working live demo,
+exports, and a shareable presentation. The code is the implementation detail
+behind that experience.
 
 ## Product view
 
-Webslides lets a user:
+The deck has eight slides: the hero, the tool-sprawl problem, what a toolbox is,
+build and consume, no lock-in, a one-toolbox-many-agents use case, a live "Agent
++ Toolbox vs Agent + Tools" demo, and value plus get-started. Speaker notes live
+in `presenter-notes.md`.
+
+It lets a user:
 
 - present a browser-based slide deck with keyboard and swipe navigation;
-- put live React components, data views, and demos directly inside slides;
+- run a live demo that streams two Foundry agents side by side, or realistic
+  demo data when the backend is offline;
 - ask Copilot to add, edit, theme, or polish slides;
-- run local-only server-backed demos during a presentation;
 - export private static PDF/PPTX files locally;
 - publish the interactive deck to GitHub Pages when the content is safe to make
   public.
 
-The deck should feel like a custom presentation, not a generic app scaffold.
-Changes should preserve the presenter workflow: start locally, iterate visually,
-export privately, and optionally publish publicly.
+Keep it feeling like a custom Foundry Toolboxes presentation, not a generic app
+scaffold. Changes should preserve the presenter workflow: start locally, iterate
+visually, export privately, and optionally publish publicly.
 
 ## How to interpret user requests
 

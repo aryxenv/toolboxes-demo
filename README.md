@@ -1,16 +1,29 @@
-# Webslides template
+# Toolboxes in Foundry
 
-React + Vite + Tailwind starter for building slide decks as web applications. Each slide can be a self-contained mini-app while sharing the presentation UI system in `src/components/ui`.
+An interactive deck that tells the story of Foundry Toolboxes: curate tools once,
+expose them through one MCP endpoint, and reuse them across every agent. It runs
+as a web app, so one slide is a live "Agent + Toolbox vs Agent + Tools"
+comparison. Built on the webslides template (React, Vite, Tailwind, with an
+optional FastAPI backend).
 
-Inspired & driven by...
+## The deck
 
-- Github Copilot App "Pick & Polish" feature.
-- Powerful models & reasoning of Github Copilot.
-- In-slide demos to deliver presentations in a unique & powerful way.
+Eight slides, in order:
 
-## Run locally
+1. Toolboxes in Foundry (hero)
+2. The problem: every agent re-wires every tool
+3. What is a toolbox (Discover, Build, Consume, Govern)
+4. Build once, consume anywhere (one MCP endpoint, central auth, versioning)
+5. Foundry-homed, not Foundry-bound (no lock-in)
+6. Use case: one toolbox, three agents
+7. Live demo: Agent + Toolbox vs Agent + Tools
+8. Ship agents, not plumbing (recap and get started)
 
-### Client (Presentation)
+Speaker notes for every slide are in `presenter-notes.md`.
+
+## Run it
+
+The deck:
 
 ```pwsh
 npm install
@@ -19,69 +32,36 @@ npm run dev
 
 Open http://localhost:5173.
 
-### Server (Optional)
+The backend is only needed for the live demo on slide 7:
 
 ```pwsh
+cd server
 uv sync
 uv run fastapi dev
 ```
 
-Available at http://localhost:8000 (no config needed - automatically available on client)
+When the backend is offline (for example, the published deck), slide 7 runs on
+realistic demo data labeled `Demo data`. When it is online it is fully live, with
+real streaming, evaluations, and token usage. See `server/README.md` for the
+demo setup.
 
-### Live demo — "Agent + Toolbox vs Agent"
+## Present
 
-Slide 7 streams two real Microsoft Foundry agents side by side: one consuming a
-Foundry **Toolbox** over its MCP endpoint, one with no tools. To run it live:
-
-1. `cp server/.env.example server/.env` and fill in your Foundry project, model,
-   toolbox, and Azure OpenAI endpoints, then `az login`.
-2. Build the shared toolbox once: `cd server && uv run python create_toolbox.py`
-   and paste the printed endpoint into `FOUNDRY_TOOLBOX_ENDPOINT`.
-3. Start the server (`uv run fastapi dev`) and the deck (`npm run dev`).
-
-`server/.env` is git-ignored and auth uses `DefaultAzureCredential` — no secrets
-are committed. When the backend is offline (e.g. the published deck) the slide
-runs on realistic **demo data** labeled `Demo data`; when it's online it's fully
-live and real errors surface as-is. See `presenter-notes.md` for the demo script.
-
-## Build and present
-
-Use the browser as the live deck and GitHub Copilot App as the authoring surface.
-Start locally, open http://localhost:5173, then ask Copilot for slide, layout,
-demo, copy, or theme changes.
-
-Presentation controls:
-
-- **Left / Right arrows** move between slides.
-- **Spacebar** cycles interactive states inside the active slide.
-- **Swipe** moves between slides on phones.
-
-Repo skills in `.github/skills/` cover common deck work:
-
-- **Add/Edit/Delete slides**: change the story without learning the file layout.
-- **Theming**: update palette and account logo.
-- **Integrate demo into slides**: map an app into the deck and backend.
-- **Update PPTX export**: verify native editable and image PowerPoint exports after slide changes.
+- Left / Right arrows move between slides.
+- Spacebar cycles the highlighted card on a slide.
+- Swipe moves between slides on touch.
 
 ## Export and share
 
-Use the footer **Export** menu for private files. Local file exports require the
-FastAPI server and save ignored artifacts in `exports/`; production exports
-download the file.
+Use the footer Export menu. Local PDF and PowerPoint exports require the backend
+and write ignored files to `exports/`; production exports download directly.
 
-| Option | Availability | Output or action |
+| Option | Availability | Output |
 | --- | --- | --- |
-| **PDF** | Always | `webslides.pdf` |
-| **PowerPoint** | Always | Editable `webslides.pptx` or image `webslides-img.pptx` |
-| **GitHub Pages** | Dev only | Publish a public static interactive deck |
-| **Azure** | Dev only | Deploy the interactive deck and FastAPI server |
-
-Azure deploys use:
-
-```pwsh
-azd up
-npm run azure:url
-```
+| PDF | Always | `webslides.pdf` |
+| PowerPoint | Always | Editable `webslides.pptx` or image `webslides-img.pptx` |
+| GitHub Pages | Dev only | Public static interactive deck |
+| Azure | Dev only | Interactive deck plus FastAPI backend |
 
 ## Project reference
 
@@ -89,4 +69,5 @@ npm run azure:url
 - Deck order: `src/Presentation.tsx`
 - Shared UI: `src/components/ui`
 - Theme tokens: `src/index.css`
-- Backend routes: `server/`
+- Backend: `server/`
+- Speaker notes and sources: `presenter-notes.md`
